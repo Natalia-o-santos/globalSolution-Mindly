@@ -1,0 +1,6 @@
+@Mindly.Api_HostAddress = http://localhost:0
+
+GET {{Mindly.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

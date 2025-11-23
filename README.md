@@ -2,6 +2,12 @@
 
 **Mindly** é uma API ASP.NET Core pensada para organizar sessões de foco e pausas com alertas inteligentes e integração simulada com IoT, seguindo métodos comprovados como Pomodoro para mitigar distração e burnout.
 
+##Integrantes
+
+Natália de Oliveira Santos - RM56030
+Alex Ribeiro Maia - RM557356
+Felipe Olecsiuc Damasceno - RM559433
+
 ## Arquitetura & Domínio
 
 - **Entidade principal**: `FocusSession` representa blocos de foco e descanso. O domínio garante título obrigatório, duração de foco entre 15 e 150 minutos, pausas entre 5 e 45 minutos, e controla os estados `Planned`, `InProgress`, `Paused` e `Completed`.

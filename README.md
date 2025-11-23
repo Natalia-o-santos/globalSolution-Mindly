@@ -163,7 +163,7 @@ A solução permite que trabalhadores, estudantes e freelancers gerenciem seu te
 - `PUT /api/focussessions/{id}`: Atualizar sessão
 - `DELETE /api/focussessions/{id}`: Remover sessão
 
-### `/search` com Paginação + Ordenação + Filtros (15 pts)
+### `/search` com Paginação + Ordenação + Filtros 
 
 **`GET /api/users/search`**:
 

@@ -8,11 +8,11 @@
 - Alex Ribeiro Maia - RM557356
 - Felipe Olecsiuc Damasceno - RM559433
 
-## 📋 Visão Geral
+## Visão Geral
 
 A solução permite que trabalhadores, estudantes e freelancers gerenciem seu tempo de foco e pausas de forma inteligente, promovendo bem-estar e equilíbrio entre produtividade e saúde mental. A API oferece CRUD completo de **usuários** e **sessões de foco**, busca avançada com paginação e filtros, e integração HATEOAS para navegação entre recursos. Cada sessão de foco pertence a um usuário, permitindo rastreamento individualizado de produtividade.
 
-## 🏗️ Decisões Arquiteturais
+## Decisões Arquiteturais
 
 ### Arquitetura em Camadas
 - **Domain**: Entidades com invariantes e regras de negócio encapsuladas
@@ -27,7 +27,7 @@ A solução permite que trabalhadores, estudantes e freelancers gerenciem seu te
 - **HATEOAS**: Links de navegação em todas as respostas de recursos
 - **Relacionamento 1:N**: Um usuário pode ter várias sessões de foco
 
-## 1️⃣ Domínio & Arquitetura (20 pts)
+## Domínio & Arquitetura 
 
 ### Entidades do Negócio e Invariantes
 
@@ -56,8 +56,7 @@ A solução permite que trabalhadores, estudantes e freelancers gerenciem seu te
 - **`FocusSessionService`**: Validação de existência antes de atualizar/deletar, aplicação de regras de domínio
 - Tratamento de exceções de domínio (`DomainValidationException`) em ambos os serviços
 
-## 2️⃣ Aplicação (20 pts)
-
+##  Aplicação 
 ### Serviços de Aplicação (Casos de Uso)
 
 **`IUserService`** implementa:
@@ -98,7 +97,7 @@ A solução permite que trabalhadores, estudantes e freelancers gerenciem seu te
 - **Validações automáticas**: Data Annotations nos DTOs geram `400` com detalhes
 - **Middleware de exceções**: `UseExceptionHandler` captura e formata erros
 
-## 3️⃣ Infra & Dados (20 pts)
+## Infra & Dados 
 
 ### EF Core: Mapeamentos de Entidades
 
@@ -132,9 +131,9 @@ A solução permite que trabalhadores, estudantes e freelancers gerenciem seu te
 - **Aplicação automática**: `context.Database.Migrate()` no `Program.cs`
 - **Seed automático**: `SeedData.EnsureSeeded(context)` popula dados de exemplo
 
-## 4️⃣ Camada Web - Web API (30 pts)
+## Camada Web - Web API 
 
-### CRUD/Controllers com Boas Práticas (10 pts)
+### CRUD/Controllers com Boas Práticas 
 
 **`UsersController`** (`src/Mindly.Api/Controllers/UsersController.cs`):
 - ✅ `[ApiController]` e `[Route("api/[controller]")]`
@@ -194,7 +193,7 @@ A solução permite que trabalhadores, estudantes e freelancers gerenciem seu te
 - `Page`, `PageSize`, `Total`, `TotalPages`
 - `Items`: Array de `FocusSessionViewModel` (cada um com links HATEOAS)
 
-### HATEOAS (5 pts)
+### HATEOAS
 
 **Links em cada `UserViewModel`**:
 - `self`: GET do recurso
@@ -209,17 +208,8 @@ A solução permite que trabalhadores, estudantes e freelancers gerenciem seu te
 
 **Implementação**: `LinkGenerator` gera URIs dinâmicas baseadas nas rotas do controller.
 
-## 5️⃣ Documentação (README) (10 pts)
 
-✅ Este README cobre:
-- Visão geral do projeto
-- Decisões arquiteturais detalhadas
-- Como rodar (migrations/seed)
-- Variáveis de ambiente
-- Rotas/endpoints completos
-- Exemplos de uso (cURL/Swagger)
-
-## 🚀 Como Rodar
+## Como Rodar
 
 ### Pré-requisitos
 - .NET 8.0 SDK
@@ -268,7 +258,7 @@ export ASPNETCORE_ENVIRONMENT="Production"
 - HTTPS: `https://localhost:5001`
 - HTTP: `http://localhost:5000`
 
-## 📍 Rotas/Endpoints
+##  Rotas/Endpoints
 
 ### Base URL
 - **HTTPS**: `https://localhost:5001`
@@ -366,7 +356,7 @@ curl -X DELETE https://localhost:5001/api/focussessions/{id} -k
 
 O projeto inclui `src/Mindly.Api/Mindly.Api.http` com exemplos de requisições prontas para usar no Visual Studio/Rider.
 
-## 📦 Estrutura do Projeto
+##  Estrutura do Projeto
 
 ```
 src/Mindly.Api/

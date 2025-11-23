@@ -15,12 +15,13 @@ public sealed class FocusSession
         // ORM
     }
 
-    public FocusSession(string title, int focusMinutes, int breakMinutes, string? description = null, bool enableIoT = true)
+    public FocusSession(string title, int focusMinutes, int breakMinutes, Guid userId, string? description = null, bool enableIoT = true)
     {
         Title = title?.Trim() ?? throw new DomainValidationException("O título é obrigatório.");
         Description = description?.Trim();
         FocusMinutes = focusMinutes;
         BreakMinutes = breakMinutes;
+        UserId = userId;
         IoTIntegrationEnabled = enableIoT;
         ValidateRanges();
         Status = FocusSessionStatus.Planned;
@@ -37,6 +38,10 @@ public sealed class FocusSession
     public DateTime CreatedAt { get; private set; }
     public DateTime UpdatedAt { get; private set; }
     public bool IoTIntegrationEnabled { get; private set; }
+    
+    // Relacionamento: Uma sessão pertence a um usuário
+    public Guid UserId { get; private set; }
+    public User? User { get; private set; }
 
     public void UpdateDetails(string title, string? description, int focusMinutes, int breakMinutes, bool enableIoT)
     {

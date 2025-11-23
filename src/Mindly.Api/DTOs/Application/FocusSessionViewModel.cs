@@ -11,6 +11,7 @@ public sealed class FocusSessionViewModel
     public int BreakMinutes { get; init; }
     public FocusSessionStatus Status { get; init; }
     public bool IoTIntegrationEnabled { get; init; }
+    public Guid UserId { get; init; }
     public DateTime CreatedAt { get; init; }
     public DateTime UpdatedAt { get; init; }
     public IEnumerable<LinkDto>? Links { get; init; }

@@ -17,7 +17,7 @@ public class FocusSessionService : IFocusSessionService
 
     public async Task<FocusSession> CreateAsync(FocusSessionCreateDto dto, CancellationToken cancellationToken = default)
     {
-        var session = new FocusSession(dto.Title, dto.FocusMinutes, dto.BreakMinutes, dto.Description, dto.IoTIntegrationEnabled);
+        var session = new FocusSession(dto.Title, dto.FocusMinutes, dto.BreakMinutes, dto.UserId, dto.Description, dto.IoTIntegrationEnabled);
         await _repository.AddAsync(session, cancellationToken);
         await _repository.SaveChangesAsync(cancellationToken);
         return session;

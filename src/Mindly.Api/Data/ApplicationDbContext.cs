@@ -12,10 +12,38 @@ public class ApplicationDbContext : DbContext
     }
 
     public DbSet<FocusSession> FocusSessions => Set<FocusSession>();
+    public DbSet<User> Users => Set<User>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
+
+        modelBuilder.Entity<User>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+
+            entity.Property(e => e.Name)
+                .IsRequired()
+                .HasMaxLength(100);
+
+            entity.Property(e => e.Email)
+                .IsRequired()
+                .HasMaxLength(255);
+
+            entity.HasIndex(e => e.Email)
+                .IsUnique();
+
+            entity.Property(e => e.CreatedAt)
+                .IsRequired();
+
+            entity.Property(e => e.UpdatedAt)
+                .IsRequired();
+
+            entity.HasMany(e => e.FocusSessions)
+                .WithOne(e => e.User)
+                .HasForeignKey(e => e.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
+        });
 
         modelBuilder.Entity<FocusSession>(entity =>
         {
@@ -41,6 +69,9 @@ public class ApplicationDbContext : DbContext
 
             entity.Property(e => e.IoTIntegrationEnabled)
                 .HasDefaultValue(true)
+                .IsRequired();
+
+            entity.Property(e => e.UserId)
                 .IsRequired();
 
             entity.Property(e => e.CreatedAt)

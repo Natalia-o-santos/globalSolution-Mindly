@@ -17,5 +17,8 @@ public class FocusSessionCreateDto
     [Range(5, 45, ErrorMessage = "A pausa precisa ser entre 5 e 45 minutos.")]
     public int BreakMinutes { get; set; }
 
+    [Required(ErrorMessage = "O ID do usuário é obrigatório.")]
+    public Guid UserId { get; set; }
+
     public bool IoTIntegrationEnabled { get; set; } = true;
 }

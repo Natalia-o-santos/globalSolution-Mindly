@@ -86,6 +86,7 @@ public class FocusSessionsController : ControllerBase
             BreakMinutes = session.BreakMinutes,
             Status = session.Status,
             IoTIntegrationEnabled = session.IoTIntegrationEnabled,
+            UserId = session.UserId,
             CreatedAt = session.CreatedAt,
             UpdatedAt = session.UpdatedAt,
             Links = links

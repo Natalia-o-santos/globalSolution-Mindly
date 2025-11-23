@@ -1,6 +1,93 @@
-@Mindly.Api_HostAddress = http://localhost:0
+@Mindly.Api_HostAddress = https://localhost:5001
+@Mindly.Api_HostAddress_Http = http://localhost:5000
 
-GET {{Mindly.Api_HostAddress}}/weatherforecast/
+### ============================================
+### USUÁRIOS (Users)
+### ============================================
+
+### Buscar todos os usuários (com filtros e paginação)
+GET {{Mindly.Api_HostAddress}}/api/users/search?page=1&pageSize=10&sortBy=createdAt&descending=true
 Accept: application/json
+
+### Buscar usuários por nome
+GET {{Mindly.Api_HostAddress}}/api/users/search?name=Ana&page=1&pageSize=10
+Accept: application/json
+
+### Buscar usuários por email
+GET {{Mindly.Api_HostAddress}}/api/users/search?email=mindly&page=1&pageSize=10
+Accept: application/json
+
+### Buscar usuário por ID
+GET {{Mindly.Api_HostAddress}}/api/users/00000000-0000-0000-0000-000000000000
+Accept: application/json
+
+### Criar novo usuário
+POST {{Mindly.Api_HostAddress}}/api/users
+Content-Type: application/json
+
+{
+  "name": "João Silva",
+  "email": "joao.silva@mindly.com"
+}
+
+### Atualizar usuário
+PUT {{Mindly.Api_HostAddress}}/api/users/00000000-0000-0000-0000-000000000000
+Content-Type: application/json
+
+{
+  "name": "João Silva Atualizado",
+  "email": "joao.silva.updated@mindly.com"
+}
+
+### Deletar usuário
+DELETE {{Mindly.Api_HostAddress}}/api/users/00000000-0000-0000-0000-000000000000
+
+### ============================================
+### SESSÕES DE FOCO (Focus Sessions)
+### ============================================
+
+### Buscar todas as sessões (com filtros e paginação)
+GET {{Mindly.Api_HostAddress}}/api/focussessions/search?page=1&pageSize=10&sortBy=createdAt&descending=true
+Accept: application/json
+
+### Buscar sessões por status
+GET {{Mindly.Api_HostAddress}}/api/focussessions/search?status=Planned&page=1&pageSize=5
+Accept: application/json
+
+### Buscar sessões por título
+GET {{Mindly.Api_HostAddress}}/api/focussessions/search?title=foco&page=1&pageSize=10
+Accept: application/json
+
+### Buscar sessão por ID
+GET {{Mindly.Api_HostAddress}}/api/focussessions/00000000-0000-0000-0000-000000000000
+Accept: application/json
+
+### Criar nova sessão de foco (use um userId válido)
+POST {{Mindly.Api_HostAddress}}/api/focussessions
+Content-Type: application/json
+
+{
+  "title": "Foco em estudo assistido",
+  "focusMinutes": 45,
+  "breakMinutes": 10,
+  "userId": "00000000-0000-0000-0000-000000000000",
+  "description": "Sessão de foco com integração IoT",
+  "iotIntegrationEnabled": true
+}
+
+### Atualizar sessão
+PUT {{Mindly.Api_HostAddress}}/api/focussessions/00000000-0000-0000-0000-000000000000
+Content-Type: application/json
+
+{
+  "title": "Sessão atualizada",
+  "focusMinutes": 50,
+  "breakMinutes": 15,
+  "description": "Descrição atualizada",
+  "iotIntegrationEnabled": false
+}
+
+### Deletar sessão
+DELETE {{Mindly.Api_HostAddress}}/api/focussessions/00000000-0000-0000-0000-000000000000
 
 ###
